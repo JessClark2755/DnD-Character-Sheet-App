@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
 
+
+// BackgroundPanel.java code posted by Rob Camick on https://tips4java.wordpress.com/2008/10/12/background-panel/
+
 /*
  *  Support custom painting on a panel in the form of
  *
