@@ -17,13 +17,17 @@ public class Main {
 		characterNameField.setPreferredSize(new Dimension(170, 25));   // textfield size
 		characterNameField.setBounds(0, 0, 170, 25);                   // textfield position in panel
 		
+		//HitPoints TEXTFIELD
+		JTextField HitPointsField = new JTextField();                  // textfield for HP 
+		HitPointsField.setPreferredSize(new Dimension(0, 0));          // textfield size
+		HitPointsField.setBounds(0, 0, 350, 100);                      // textfield position in panel
 		
 		//JPanels = a container to hold other components
 		
 		//NAME PANEL
 		JPanel characterNamePanel = new JPanel();         // panel for name
 		//characterNamePanel.setBackground(Color.red);    // for debugging
-		characterNamePanel.setBounds(75,65,170,25);      // position in frame
+		characterNamePanel.setBounds(75,65,170,25);       // position in frame
 		characterNamePanel.setLayout(new BorderLayout()); // needed to work properly
 				
 		//ATTRIBUTES PANEL
@@ -31,6 +35,12 @@ public class Main {
 		//attributesPanel.setBackground(Color.blue);      // for debugging
 		attributesPanel.setBounds(0,200,200,750);         // position in frame
 		attributesPanel.setLayout(new BorderLayout());    // needed to work properly
+		
+		//HitPoints PANEL
+		JPanel HitPointsPanel = new JPanel();             // panel for name
+		//characterNamePanel.setBackground(Color.red);    // for debugging
+		HitPointsPanel.setBounds(350,305,233,40);         // position in frame
+		HitPointsPanel.setLayout(new BorderLayout());     // needed to work properly
 		
 		//MENU 
 		JMenuBar menubar = new JMenuBar();
@@ -85,6 +95,12 @@ public class Main {
 		//ADD TO FRAME
 		characterNamePanel.add(characterNameField);    // add name textfield to name panel
 		frame.add(characterNamePanel);                 // add name panel to frame
+		//frame.add(attributesPanel);
+		frame.setJMenuBar(menubar);
+		
+	    //ADD TO FRAME
+		HitPointsPanel.add(HitPointsField);         // add name Hitpoints to Hitpoints panel
+		frame.add(HitPointsPanel);                 // add hitpoints to frame
 		//frame.add(attributesPanel);
 		frame.setJMenuBar(menubar);
 		
