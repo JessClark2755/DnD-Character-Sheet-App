@@ -28,6 +28,16 @@ public class DiceRoller {
 		else 
 			return die.nextInt(20) + 1;
 	}
+  private static DiceRoller instance;
+
+  
+
+  private static DiceRoller getInstance(){
+    if(instance == null){
+      instance = new DiceRoller();
+    }
+    return instance;
+  }
 	
 
 }
