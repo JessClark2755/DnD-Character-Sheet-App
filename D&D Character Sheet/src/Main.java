@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Main {
 	
 	public static void main(String[] args) {	
-		
+		SearchDB db = new SearchDB();
 		DiceRoller diceRoller = new DiceRoller();		//Rolls the dice
  		
 		//JTextFields
