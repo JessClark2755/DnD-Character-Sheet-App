@@ -6,11 +6,22 @@ import javax.swing.*;
 
 public class Main {
 	
+	static String characterName = "";						//name entered by user 
+	static int strengthValue;
+	static int dexterityValue;
+	static int constitutionValue;
+	static int intelligenceValue;
+	static int wisdomValue;
+	static int charismaValue;
+	
 	public static void main(String[] args) {	
 		SearchDB db = new SearchDB();
-		DiceRoller diceRoller = new DiceRoller();		//Rolls the dice
- 		
-		//JTextFields
+		DiceRoller diceRoller = DiceRoller.createInstance();		//Rolls the dice
+		// JFrame = a GUI window to add components to
+		
+	     JFrame frame = new JFrame(); // creates a frame
+		
+	    //JTextFields
 		
 		//NAME TEXTFIELD
 		JTextField characterNameField = new JTextField();              // textfield for name
@@ -72,8 +83,6 @@ public class Main {
 		
 		JMenu dice = new JMenu("Roll Dice");			  // Menu for dice rolling
 		menubar.add(dice);
-		JMenu help = new JMenu("Help");					 // help menu
-		menubar.add(help);
 		
 		JMenuItem die4 = new JMenuItem("Size 4");
 		dice.add(die4);									 // roll four-sided die
@@ -93,10 +102,6 @@ public class Main {
 		JMenuItem die20 = new JMenuItem("Size 20");
 		dice.add(die20);
 		
-		// JFrame = a GUI window to add components to
-		
-		JFrame frame = new JFrame(); // creates a frame
-		
 		//TITLE LINE
 		frame.setTitle("D&D Character Sheet");                  // sets title of frame
 		ImageIcon frameLogo = new ImageIcon("d&d logo0.png");   // create an ImageIcon
@@ -115,7 +120,7 @@ public class Main {
 		//FRAME SETTINGS
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit application on exit button
 		frame.setVisible(true);                               // makes frame visible
-		frame.setLayout(null);                                // needed to make other components work properly		
+		frame.setLayout(null);      // needed to make other components work properly
 		
 		//ADD TO FRAME
 		characterNamePanel.add(characterNameField);    // add name textfield to name panel
@@ -130,6 +135,63 @@ public class Main {
 		HitPointsPanel.add(HitPointsField);         // add name Hitpoints to Hitpoints panel
 		frame.add(HitPointsPanel);                 // add hitpoints to frame
 		frame.setJMenuBar(menubar);
+		
+		//Action Listeners
+		
+		characterNameField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				characterName = characterNameField.getText();
+				System.out.println(characterName); //testing
+			}
+		});
+		
+		strengthField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = strengthField.getText();
+				strengthValue = Integer.parseInt(input);
+				System.out.println(strengthValue); //testing
+			}
+		});
+		
+		dexterityField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = dexterityField.getText();
+				dexterityValue = Integer.parseInt(input);
+				System.out.println(dexterityValue); //testing
+			}
+		});
+		
+		constitutionField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = constitutionField.getText();
+				constitutionValue = Integer.parseInt(input);
+				System.out.println(constitutionValue); //testing
+			}
+		});
+		
+		intelligenceField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = intelligenceField.getText();
+				intelligenceValue = Integer.parseInt(input);
+				System.out.println(intelligenceValue); //testing
+			}
+		});
+		
+		wisdomField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = wisdomField.getText();
+				wisdomValue = Integer.parseInt(input);
+				System.out.println(wisdomValue); //testing
+			}
+		});
+		
+		charismaField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = charismaField.getText();
+				charismaValue = Integer.parseInt(input);
+				System.out.println(charismaValue); //testing
+			}
+		});
 		
 		/*
 		 * Action listener class for when the user 

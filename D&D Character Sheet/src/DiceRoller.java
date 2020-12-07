@@ -4,10 +4,14 @@ import java.util.Random;
  *  A class for rolling the different sizes of dice.
  */
 public class DiceRoller {
+	private static DiceRoller instance;
+	private static boolean exists = false;
 	private Random die;		
 	
-	public DiceRoller() {
+	
+	private DiceRoller() {
 		die = new Random();
+		exists = true;
 	}
 	
 	/*
@@ -28,16 +32,11 @@ public class DiceRoller {
 		else 
 			return die.nextInt(20) + 1;
 	}
-  private static DiceRoller instance;
-
-  
-
-  private static DiceRoller getInstance(){
-    if(instance == null){
-      instance = new DiceRoller();
-    }
-    return instance;
-  }
-	
-
+ 
+	public static DiceRoller createInstance(){
+		if(!exists){
+			instance = new DiceRoller();
+		}
+		return instance;
+	}
 }
