@@ -39,8 +39,33 @@ public class Main {
 		//HitPoints PANEL
 		JPanel HitPointsPanel = new JPanel();             // panel for name
 		//characterNamePanel.setBackground(Color.red);    // for debugging
-		HitPointsPanel.setBounds(350,305,233,40);         // position in frame
+		HitPointsPanel.setBounds(350,274,233,30);         // position in frame
 		HitPointsPanel.setLayout(new BorderLayout());     // needed to work properly
+		
+		//attribute text fields
+		JTextField strengthField = new JTextField();
+		strengthField.setPreferredSize(new Dimension(0, 0));
+		strengthField.setBounds(79, 170, 20, 20);
+		
+		JTextField dexterityField = new JTextField();
+		dexterityField.setPreferredSize(new Dimension(0, 0));
+		dexterityField.setBounds(79, 244, 20, 20);
+		
+		JTextField constitutionField = new JTextField();
+		constitutionField.setPreferredSize(new Dimension(0, 0));
+		constitutionField.setBounds(79, 318, 20, 20);
+		
+		JTextField intelligenceField = new JTextField();
+		intelligenceField.setPreferredSize(new Dimension(0, 0));
+		intelligenceField.setBounds(79, 392, 20, 20);
+		
+		JTextField wisdomField = new JTextField();
+		wisdomField.setPreferredSize(new Dimension(0, 0));
+		wisdomField.setBounds(79, 466, 20, 20);
+		
+		JTextField charismaField = new JTextField();
+		charismaField.setPreferredSize(new Dimension(0, 0));
+		charismaField.setBounds(79, 540, 20, 20);
 		
 		//MENU 
 		JMenuBar menubar = new JMenuBar();
@@ -94,14 +119,16 @@ public class Main {
 		
 		//ADD TO FRAME
 		characterNamePanel.add(characterNameField);    // add name textfield to name panel
-		frame.add(characterNamePanel);                 // add name panel to frame
-		//frame.add(attributesPanel);
+		frame.add(characterNamePanel); // add name panel to frame
+		frame.add(strengthField);
+		frame.add(dexterityField);
+		frame.add(constitutionField);
+		frame.add(intelligenceField);
+		frame.add(wisdomField);
+		frame.add(charismaField);
 		frame.setJMenuBar(menubar);
-		
-	    //ADD TO FRAME
 		HitPointsPanel.add(HitPointsField);         // add name Hitpoints to Hitpoints panel
 		frame.add(HitPointsPanel);                 // add hitpoints to frame
-		//frame.add(attributesPanel);
 		frame.setJMenuBar(menubar);
 		
 		/*
