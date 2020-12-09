@@ -6,11 +6,22 @@ import javax.swing.*;
 
 public class Main {
 	
+	static String characterName = "";						//name entered by user 
+	static int strengthValue = 0;
+	static int dexterityValue = 0;
+	static int constitutionValue = 0;
+	static int intelligenceValue = 0;
+	static int wisdomValue = 0;
+	static int charismaValue = 0;
+	
 	public static void main(String[] args) {	
 		SearchDB db = new SearchDB();
-		DiceRoller diceRoller = new DiceRoller();		//Rolls the dice
- 		
-		//JTextFields
+		DiceRoller diceRoller = DiceRoller.createInstance();		//Rolls the dice
+		// JFrame = a GUI window to add components to
+		
+	     JFrame frame = new JFrame(); // creates a frame
+		
+	    //JTextFields
 		
 		//NAME TEXTFIELD
 		JTextField characterNameField = new JTextField();              // textfield for name
@@ -39,16 +50,39 @@ public class Main {
 		//HitPoints PANEL
 		JPanel HitPointsPanel = new JPanel();             // panel for name
 		//characterNamePanel.setBackground(Color.red);    // for debugging
-		HitPointsPanel.setBounds(350,305,233,40);         // position in frame
+		HitPointsPanel.setBounds(350,274,233,30);         // position in frame
 		HitPointsPanel.setLayout(new BorderLayout());     // needed to work properly
+		
+		//attribute text fields
+		JTextField strengthField = new JTextField();
+		strengthField.setPreferredSize(new Dimension(0, 0));
+		strengthField.setBounds(79, 170, 20, 20);
+		
+		JTextField dexterityField = new JTextField();
+		dexterityField.setPreferredSize(new Dimension(0, 0));
+		dexterityField.setBounds(79, 244, 20, 20);
+		
+		JTextField constitutionField = new JTextField();
+		constitutionField.setPreferredSize(new Dimension(0, 0));
+		constitutionField.setBounds(79, 318, 20, 20);
+		
+		JTextField intelligenceField = new JTextField();
+		intelligenceField.setPreferredSize(new Dimension(0, 0));
+		intelligenceField.setBounds(79, 392, 20, 20);
+		
+		JTextField wisdomField = new JTextField();
+		wisdomField.setPreferredSize(new Dimension(0, 0));
+		wisdomField.setBounds(79, 466, 20, 20);
+		
+		JTextField charismaField = new JTextField();
+		charismaField.setPreferredSize(new Dimension(0, 0));
+		charismaField.setBounds(79, 540, 20, 20);
 		
 		//MENU 
 		JMenuBar menubar = new JMenuBar();
 		
 		JMenu dice = new JMenu("Roll Dice");			  // Menu for dice rolling
 		menubar.add(dice);
-		JMenu help = new JMenu("Help");					 // help menu
-		menubar.add(help);
 		
 		JMenuItem die4 = new JMenuItem("Size 4");
 		dice.add(die4);									 // roll four-sided die
@@ -68,10 +102,6 @@ public class Main {
 		JMenuItem die20 = new JMenuItem("Size 20");
 		dice.add(die20);
 		
-		// JFrame = a GUI window to add components to
-		
-		JFrame frame = new JFrame(); // creates a frame
-		
 		//TITLE LINE
 		frame.setTitle("D&D Character Sheet");                  // sets title of frame
 		ImageIcon frameLogo = new ImageIcon("d&d logo0.png");   // create an ImageIcon
@@ -90,19 +120,107 @@ public class Main {
 		//FRAME SETTINGS
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit application on exit button
 		frame.setVisible(true);                               // makes frame visible
-		frame.setLayout(null);                                // needed to make other components work properly		
+		frame.setLayout(null);      // needed to make other components work properly
 		
 		//ADD TO FRAME
 		characterNamePanel.add(characterNameField);    // add name textfield to name panel
-		frame.add(characterNamePanel);                 // add name panel to frame
-		//frame.add(attributesPanel);
+		frame.add(characterNamePanel); // add name panel to frame
+		frame.add(strengthField);
+		frame.add(dexterityField);
+		frame.add(constitutionField);
+		frame.add(intelligenceField);
+		frame.add(wisdomField);
+		frame.add(charismaField);
 		frame.setJMenuBar(menubar);
-		
-	    //ADD TO FRAME
 		HitPointsPanel.add(HitPointsField);         // add name Hitpoints to Hitpoints panel
 		frame.add(HitPointsPanel);                 // add hitpoints to frame
-		//frame.add(attributesPanel);
 		frame.setJMenuBar(menubar);
+		
+		//Action Listeners
+		
+		characterNameField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				characterName = characterNameField.getText();
+				System.out.println(characterName); //testing
+			}
+		});
+		
+		strengthField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = strengthField.getText();
+				strengthValue = Integer.parseInt(input);
+				System.out.println(strengthValue); //testing
+			}
+		});
+		
+		dexterityField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = dexterityField.getText();
+				dexterityValue = Integer.parseInt(input);
+				System.out.println(dexterityValue); //testing
+			}
+		});
+		
+		constitutionField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = constitutionField.getText();
+				constitutionValue = Integer.parseInt(input);
+				System.out.println(constitutionValue); //testing
+			}
+		});
+		
+		intelligenceField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = intelligenceField.getText();
+				intelligenceValue = Integer.parseInt(input);
+				System.out.println(intelligenceValue); //testing
+			}
+		});
+		
+		wisdomField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = wisdomField.getText();
+				wisdomValue = Integer.parseInt(input);
+				System.out.println(wisdomValue); //testing
+			}
+		});
+		
+		charismaField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String input = charismaField.getText();
+				charismaValue = Integer.parseInt(input);
+				System.out.println(charismaValue); //testing
+			}
+		});
+		
+		//If user opens program again with saved data
+		if (characterName != "") {
+			characterNameField.setText(characterName);
+		}
+		
+		if (strengthValue != 0) {
+			strengthField.setText(Integer.toString(strengthValue));
+		}
+		
+		if (dexterityValue != 0) {
+			dexterityField.setText(Integer.toString(dexterityValue));
+		}
+		
+		if (constitutionValue != 0) {
+			constitutionField.setText(Integer.toString(constitutionValue));
+		}
+		
+		if (intelligenceValue != 0) {
+			intelligenceField.setText(Integer.toString(intelligenceValue));
+		}
+		
+		if (wisdomValue != 0) {
+			wisdomField.setText(Integer.toString(wisdomValue));
+		}
+		
+		if (charismaValue != 0) {
+			charismaField.setText(Integer.toString(charismaValue));
+		}
 		
 		/*
 		 * Action listener class for when the user 
@@ -136,4 +254,5 @@ public class Main {
 		die12.addActionListener(new DiceAction());
 		die20.addActionListener(new DiceAction());
 	}
+	
 }
