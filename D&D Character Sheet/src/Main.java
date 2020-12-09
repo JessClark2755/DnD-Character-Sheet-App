@@ -7,12 +7,12 @@ import javax.swing.*;
 public class Main {
 	
 	static String characterName = "";						//name entered by user 
-	static int strengthValue;
-	static int dexterityValue;
-	static int constitutionValue;
-	static int intelligenceValue;
-	static int wisdomValue;
-	static int charismaValue;
+	static int strengthValue = 0;
+	static int dexterityValue = 0;
+	static int constitutionValue = 0;
+	static int intelligenceValue = 0;
+	static int wisdomValue = 0;
+	static int charismaValue = 0;
 	
 	public static void main(String[] args) {	
 		SearchDB db = new SearchDB();
@@ -193,6 +193,35 @@ public class Main {
 			}
 		});
 		
+		//If user opens program again with saved data
+		if (characterName != "") {
+			characterNameField.setText(characterName);
+		}
+		
+		if (strengthValue != 0) {
+			strengthField.setText(Integer.toString(strengthValue));
+		}
+		
+		if (dexterityValue != 0) {
+			dexterityField.setText(Integer.toString(dexterityValue));
+		}
+		
+		if (constitutionValue != 0) {
+			constitutionField.setText(Integer.toString(constitutionValue));
+		}
+		
+		if (intelligenceValue != 0) {
+			intelligenceField.setText(Integer.toString(intelligenceValue));
+		}
+		
+		if (wisdomValue != 0) {
+			wisdomField.setText(Integer.toString(wisdomValue));
+		}
+		
+		if (charismaValue != 0) {
+			charismaField.setText(Integer.toString(charismaValue));
+		}
+		
 		/*
 		 * Action listener class for when the user 
 		 * selects a die to roll from the menu
@@ -225,4 +254,5 @@ public class Main {
 		die12.addActionListener(new DiceAction());
 		die20.addActionListener(new DiceAction());
 	}
+	
 }
