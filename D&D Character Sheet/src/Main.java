@@ -7,12 +7,12 @@ import javax.swing.*;
 public class Main {
 	
 	static String characterName = "";						//name entered by user 
-	static int strengthValue = 0;
-	static int dexterityValue = 0;
-	static int constitutionValue = 0;
-	static int intelligenceValue = 0;
-	static int wisdomValue = 0;
-	static int charismaValue = 0;
+	static int strengthValue;
+	static int dexterityValue;
+	static int constitutionValue;
+	static int intelligenceValue;
+	static int wisdomValue;
+	static int charismaValue;
 	
 	public static void main(String[] args) {	
 		SearchDB db = new SearchDB();
@@ -137,10 +137,27 @@ public class Main {
 		frame.setJMenuBar(menubar);
 		
 		//Action Listeners
-		
+		if(db.exists()) {
+			characterNameField.setText(db.getName());
+			strengthField.setText(db.getStrength()+"");
+			dexterityField.setText(db.getDex()+"");
+			constitutionField.setText(db.getCons()+"");
+			intelligenceField.setText(db.getIntel()+"");
+			wisdomField.setText(db.getWisdom()+"");
+			charismaField.setText(db.getChari()+"");
+			characterName=db.getName();
+			strengthValue=db.getStrength();
+			dexterityValue=db.getDex();
+			constitutionValue=db.getCons();
+			intelligenceValue=db.getIntel();
+			wisdomValue =db.getWisdom();
+			charismaValue=db.getChari();
+		}
 		characterNameField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				characterName = characterNameField.getText();
+				
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(characterName); //testing
 			}
 		});
@@ -149,6 +166,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = strengthField.getText();
 				strengthValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(strengthValue); //testing
 			}
 		});
@@ -157,6 +175,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = dexterityField.getText();
 				dexterityValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(dexterityValue); //testing
 			}
 		});
@@ -165,6 +184,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = constitutionField.getText();
 				constitutionValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(constitutionValue); //testing
 			}
 		});
@@ -173,6 +193,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = intelligenceField.getText();
 				intelligenceValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(intelligenceValue); //testing
 			}
 		});
@@ -181,6 +202,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = wisdomField.getText();
 				wisdomValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(wisdomValue); //testing
 			}
 		});
@@ -189,38 +211,13 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String input = charismaField.getText();
 				charismaValue = Integer.parseInt(input);
+				db.addtoDB(characterName+"*"+strengthValue+"*"+dexterityValue+"*"+constitutionValue+"*"+intelligenceValue+"*"+charismaValue+"*"+wisdomValue);
 				System.out.println(charismaValue); //testing
 			}
 		});
 		
-		//If user opens program again with saved data
-		if (characterName != "") {
-			characterNameField.setText(characterName);
-		}
 		
-		if (strengthValue != 0) {
-			strengthField.setText(Integer.toString(strengthValue));
-		}
 		
-		if (dexterityValue != 0) {
-			dexterityField.setText(Integer.toString(dexterityValue));
-		}
-		
-		if (constitutionValue != 0) {
-			constitutionField.setText(Integer.toString(constitutionValue));
-		}
-		
-		if (intelligenceValue != 0) {
-			intelligenceField.setText(Integer.toString(intelligenceValue));
-		}
-		
-		if (wisdomValue != 0) {
-			wisdomField.setText(Integer.toString(wisdomValue));
-		}
-		
-		if (charismaValue != 0) {
-			charismaField.setText(Integer.toString(charismaValue));
-		}
 		
 		/*
 		 * Action listener class for when the user 
@@ -254,5 +251,4 @@ public class Main {
 		die12.addActionListener(new DiceAction());
 		die20.addActionListener(new DiceAction());
 	}
-	
 }
